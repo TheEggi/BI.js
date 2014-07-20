@@ -1,0 +1,31 @@
+{
+  "name": "BI.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/TheEggi/BI.js",
+  "authors": [
+    "TheEggi <eckerstorfer.thomas@gmail.com>"
+  ],
+  "description": "BI.js will be an easy to use, modular reporting solution.",
+  "main": "src/bijs.min.js",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "BI",
+    "reporting"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "*",
+    "angular-ui-layout": "~0.0.1",
+    "bootstrap": "~3.2.0"
+  }
+}

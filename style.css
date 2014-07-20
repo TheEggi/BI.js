@@ -1,0 +1,46 @@
+html *{
+	font-size: small;
+	font-family: Roboto;
+}
+
+.panel{
+	background: red;
+}
+
+.panel-header{
+}
+.paneldescription{
+	margin: 10px;
+	height: 100px;
+	width: 100%;
+	float: right;
+	position: top;
+	font-family: Roboto;
+	font-style: italic;
+	color: #616161;
+}
+.toolbar{
+}
+.work{
+}
+.output{
+}
+.ui-splitbar{
+	display: block;
+  	right: auto;
+  	position: absolute;
+  	z-index: 999;
+}
+.panel-heading{
+	background: #3e2723;
+}
+.panel-primary {
+  border-color: #3e2723;
+}
+
+.panel-primary > .panel-heading {
+  color: #fff;
+  background-color: #3e2723;
+  border-color: #3e2723;
+  border-radius: 0px;
+}

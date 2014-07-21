@@ -1,0 +1,38 @@
+@basecolor:  #3e2723;
+@splitbarcolor: #bdbdbd;
+@basepanelmargin: 10px;
+@splitbarwidth: 10px;
+
+
+html *{
+	font-size: small;
+	font-family: Roboto;
+}
+.panel-primary {
+	border-color: lighten(@basecolor, 10%);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.panel-primary > .panel-heading {
+	color: #fff;
+	background-color: lighten(@basecolor, 10%);
+	border-color: black;
+	border-radius: 0px;
+}
+.mainbody{
+	position: absolute;
+	top: 50px;
+	bottom: 0px;
+	width: 100%;
+	z-index: 500;
+}
+.ui-splitbar{
+	background: black;
+}
+.toolbar{
+}
+.panel{
+	background: @splitbarcolor;
+	border: black;
+}

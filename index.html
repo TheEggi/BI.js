@@ -1,21 +1,23 @@
-    <!DOCTYPE html>
-    <html ng-app="x">
-    <head>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width">
+<!DOCTYPE html>
+<html ng-app="x">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
 
 
-      <title>BI.js</title>
+    <title>BI.js</title>
 
-      <link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
-      <link rel="stylesheet" href="https://rawgithub.com/angular-ui/ui-layout/v0.0.0/ui-layout.css">
-      <link rel="stylesheet" href="style.css">
+    <link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://rawgithub.com/angular-ui/ui-layout/v0.0.0/ui-layout.css">
+    <link rel="stylesheet" href="style.css">
 
 
 
-    </head>
-    <body>
-        <!--
+</head>
+
+<body>
+    <!--
         | header                     
         |toolbar| drag and  |preview |
         |       | drop area |        |
@@ -23,34 +25,35 @@
         |       | console   |        |
 
       -->
-      <div class="panel-primary">
+    <div class="panel-primary">
         <div class="panel-heading clearfix">
-          <h4 class="panel-title pull-left" >Panel header</h4>
-          <div class="btn-group pull-right">
-            <a href="#" class="btn btn-default btn-sm">## Lock</a>
-            <a href="#" class="btn btn-default btn-sm">## Delete</a>
-            <a href="#" class="btn btn-default btn-sm">## Move</a>
-          </div>
+            <h4 class="panel-title pull-left" style="margin-top: 6.5px;">BI.js</h4>
+            <div class="btn-group pull-right">
+                <a href="#" class="btn btn-default btn-sm">## Lock</a>
+                <a href="#" class="btn btn-default btn-sm">## Delete</a>
+                <a href="#" class="btn btn-default btn-sm">## Move</a>
+            </div>
         </div>
-          <div class="panel-body mainbody">
+        <div class="panel-body mainbody">
             <div ui-layout="{flow : 'column'}">
                 <div class="panel toolbar" size="10%">
+                    <toolbar></toolbar>
                 </div>
                 <div ui-layout="{flow : 'row'}">
-                    <div class="panel panel-defalt work">
-                      <div class="paneldescription" minSize>Content</div>
+                    <div class="panel work">
+                        <div class="paneldescription pull-right" minSize>Content</div>
                     </div>
                     <div class="panel output" size="20%">
-                      <div class="paneldescription">Console</div>
+                        <div class="paneldescription pull-right">Console</div>
                     </div>
                 </div>
                 <div class="panel preview" size="25%">
-                  <div class="paneldescription">Preview</div>
+                    <div class="paneldescription pull-right">Preview</div>
                 </div>
             </div>
-          </div>
-      </div>
-        <!-- <div class="maincontainer">
+        </div>
+    </div>
+    <!-- <div class="maincontainer">
           <div class="panel-heading">
             <div class="btn-group pull-right">
               <a href="#" class="btn btn-default btn-sm">## Lock</a>
@@ -77,15 +80,15 @@
             </div>    
           </div>
         </div> -->
-        
-        
-        <script type="application/javascript" src="bower_components/angular/angular.min.js"></script>
-        <script type="application/javascript" src="bower_components/angular-ui-layout/ui-layout.js"></script>
-        <script type="application/javascript">
 
-          angular.module('x', ['ui.layout']);
 
-        </script>
+    <script type="application/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="application/javascript" src="bower_components/angular-ui-layout/ui-layout.js"></script>
+    <script type="application/javascript" src="angular-bi/toolbar.js"></script>
+    <script type="application/javascript">
+    angular.module('x', ['ui.layout', 'bijs']);
+    </script>
 
-      </body>
-      </html>
+</body>
+
+</html>

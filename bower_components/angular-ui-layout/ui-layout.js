@@ -17,6 +17,7 @@ angular.module('ui.layout', []).controller('uiLayoutCtrl', [
   '$parse',
   function ($parse) {
     var splitBarElem_htmlTemplate = '<div class="stretch ui-splitbar"></div>';
+    var divWrapper = '<div class="wrapper"></div>'
     function convertNumericDataTypesToPencents(numberVairousTypeArray, minSizes, maxSizes, parentSize, dividerSize) {
       var _i, _n;
       var _res = [];
@@ -27,7 +28,7 @@ angular.module('ui.layout', []).controller('uiLayoutCtrl', [
       var _commonSizeIndex = [];
       var _minSizes = [];
       var _maxSizes = [];
-      var _remainingSpace = 100 - (numberVairousTypeArray.length - 1) * _divierPercentage;
+      var _remainingSpace = 100; //- (numberVairousTypeArray.length) * _divierPercentage;
       for (_i = 0, _n = numberVairousTypeArray.length; _i < _n; ++_i) {
         var minSize = parseInt(minSizes[_i], 10);
         if (minSize) {
@@ -98,11 +99,6 @@ angular.module('ui.layout', []).controller('uiLayoutCtrl', [
         }
       }
       parentSize;
-      debugger;
-      for(_i = 1; _i < _res.length; _i++){
-        _res[_i] = _res[_i] + _divierPercentage;
-      }
-
       return _res;
     }
     return {
@@ -119,6 +115,7 @@ angular.module('ui.layout', []).controller('uiLayoutCtrl', [
         opts.maxSizes = opts.maxSizes || [];
         opts.minSizes = opts.minSizes || [];
         opts.dividerSize = opts.dividerSize || '10px';
+        var rawDividerSize = parseInt(opts.dividerSize, 10);
         // Preallocate the array size
         opts.sizes.length = _child_len;
         for (_i = 0; _i < _child_len; ++_i) {
@@ -134,22 +131,45 @@ angular.module('ui.layout', []).controller('uiLayoutCtrl', [
         }
         // get the final percent sizes
         // splitbar percentage
+
         _sizes = convertNumericDataTypesToPencents(opts.sizes, opts.minSizes, opts.maxSizes, tElement[0]['offset' + (isUsingColumnFlow ? 'Width' : 'Height')], opts.dividerSize);
         if (_child_len > 1) {
-          var rawDivider = parseInt(opts.dividerSize, 10);
-          var _divierPercentage = rawDivider / tElement[0]['offset' + (isUsingColumnFlow ? 'Width' : 'Height')];
           // Initialise the layout with equal sizes.
           var flowProperty = isUsingColumnFlow ? 'left' : 'top';
           var oppositeFlowProperty = isUsingColumnFlow ? 'right' : 'bottom';
           var sizeProperty = isUsingColumnFlow ? 'width' : 'height';
           _position = 0;
           for (_i = 0; _i < _child_len; ++_i) {
-            var area = angular.element(_childens[_i]).css(flowProperty, _position + '%');
-            _position += _sizes[_i];
+            console.debug("Position: " + _position);
+            var child = angular.element(_childens[_i]);
+            var area = angular.element(divWrapper);
+            area.addClass("stretch");
+            child.wrap(area);
+            var minSizeAttr = child.attr("minSize");
+            var maxSizeAttr = child.attr("maxSizeAttr");
+            var size = child.attr("size");
+
+            // copy the attributes to the new wrapper
+            if(minSizeAttr){
+              area.attr("minSize", minSizeAttr);
+            }
+            if(maxSizeAttr){
+              area.attr("maxSize", maxSizeAttr);
+            }
+            if(size){
+              area.attr("size", size);
+            }
+
+            area.css(flowProperty, _position + '%');
+            _position += _sizes[_i]; //+ _dividerPercentage;
             area.css(oppositeFlowProperty, 100 - _position + '%');
+            if(_i != 0){
+              area.css("margin-" + flowProperty, (rawDividerSize) + "px");
+            }
             if (_i < _child_len - 1) {
               // Add a split bar
-              var bar = angular.element(splitBarElem_htmlTemplate).css(flowProperty, (_position - _divierPercentage) + '%');
+              console.debug("Divider Position: " + (_position));
+              var bar = angular.element(splitBarElem_htmlTemplate).css(flowProperty, (_position) + '%');
               var childLines = bar.children();
               bar.css(sizeProperty, opts.dividerSize);
               area.after(bar);

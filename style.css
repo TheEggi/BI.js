@@ -22,7 +22,7 @@ html * {
 }
 .panel-primary > .panel-heading {
   color: #fff;
-  background-color: #996b5b;
+  background-color: #795548;
   border-color: black;
   border-radius: 0px;
 }

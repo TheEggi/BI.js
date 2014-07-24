@@ -1,0 +1,7 @@
+deploy:
+  provider: heroku
+  api_key:
+    secure: Ob0iZ+FTYdBiktFe/t7PAp1xIi1VAGC+P6EX3fVX0KoALglDypayzy5lI5bhSzQQilxmlah+y8+Xw1f8MJoS42sKfMMgZHAm+ceDQN/cdi0ao+S0d9Z0jwxJgd7BlvK/fSGZUpr8CkOkE9y0+9b0chb2sU3AoLf4niUQBu+/4fQ=
+  app: bi-js
+  on:
+    repo: TheEggi/BI.js

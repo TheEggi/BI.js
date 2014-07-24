@@ -5,3 +5,6 @@ deploy:
   app: bi-js
   on:
     repo: TheEggi/BI.js
+language: node_js
+node_js:
+  - "0.11"

@@ -1,0 +1,29 @@
+{
+  "name": "BI.js",
+  "version": "0.0.1",
+  "description": "BI.js is a report designer",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheEggi/BI.js"
+  },
+  "keywords": [
+    "BI",
+    "reporting",
+    "designer"
+  ],
+  "author": "TheEggi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheEggi/BI.js/issues"
+  },
+  "homepage": "https://github.com/TheEggi/BI.js",
+  "dependencies": {
+    "connect": "^3.1.0",
+    "finalhandler": "^0.1.0",
+    "serve-static": "^1.4.0"
+  }
+}

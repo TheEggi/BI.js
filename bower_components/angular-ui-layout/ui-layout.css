@@ -28,8 +28,3 @@
   width: 8px; height: 100%;
   cursor: col-resize;
 }
-.panel-body{
-  position: absolute;
-  width: 100%;
-  height: 500px;
-}

@@ -15,6 +15,5 @@
   },
   "_source": "git://github.com/angular-ui/ui-layout.git",
   "_target": "~0.0.1",
-  "_originalSource": "angular-ui-layout",
-  "_direct": true
+  "_originalSource": "angular-ui-layout"
 }

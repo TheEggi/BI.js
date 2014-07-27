@@ -1,14 +1,16 @@
 {
-  "name": "angularjs",
-  "homepage": "https://github.com/angular/angularjs.org",
-  "_release": "e003ee7e1a",
+  "name": "angular",
+  "version": "1.2.21",
+  "main": "./angular.js",
+  "dependencies": {},
+  "homepage": "https://github.com/angular/bower-angular",
+  "_release": "1.2.21",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "e003ee7e1a5669c784b80a04d05eb0dd568670b3"
+    "type": "version",
+    "tag": "v1.2.21",
+    "commit": "162c9a2dbffe36e0b583d78a87fc2ccb2a3abf20"
   },
-  "_source": "git://github.com/angular/angularjs.org.git",
+  "_source": "git://github.com/angular/bower-angular.git",
   "_target": "*",
-  "_originalSource": "angularjs",
-  "_direct": true
+  "_originalSource": "angularjs"
 }

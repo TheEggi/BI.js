@@ -1,0 +1,52 @@
+/*
+	base colors
+*/
+/*
+	base font color grey
+*/
+/*
+	base font color brown
+*/
+/*
+  base amber color
+*/
+/*
+	distance variables
+*/
+html * {
+  font-size: small;
+  font-family: Roboto;
+}
+.panel-primary {
+  border-color: #ffb300;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.panel-primary > .panel-heading {
+  color: #fff;
+  background-color: #ffb300;
+  border-color: black;
+  border-radius: 0px;
+}
+.mainbody {
+  position: absolute;
+  top: 80px;
+  bottom: 10px;
+  width: 100%;
+  z-index: 500;
+}
+.ui-splitbar {
+  background: #ffffff;
+}
+.panel {
+  margin: 0px;
+  border: 1px solid black;
+  color: #ffb300;
+  border-color: #bdbdbd;
+}
+.paneldescription {
+  font-style: italic;
+  color: #424242;
+  margin: 5px;
+}

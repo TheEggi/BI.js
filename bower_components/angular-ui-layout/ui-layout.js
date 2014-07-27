@@ -17,18 +17,14 @@ angular.module('ui.layout', []).controller('uiLayoutCtrl', [
   '$parse',
   function ($parse) {
     var splitBarElem_htmlTemplate = '<div class="stretch ui-splitbar"></div>';
-    var divWrapper = '<div class="wrapper"></div>'
-    function convertNumericDataTypesToPencents(numberVairousTypeArray, minSizes, maxSizes, parentSize, dividerSize) {
+    function convertNumericDataTypesToPencents(numberVairousTypeArray, minSizes, maxSizes, parentSize) {
       var _i, _n;
       var _res = [];
-      
-      var rawDivider = parseInt(dividerSize, 10);
-      var _divierPercentage = rawDivider / parentSize;
       _res.length = numberVairousTypeArray.length;
       var _commonSizeIndex = [];
       var _minSizes = [];
       var _maxSizes = [];
-      var _remainingSpace = 100; //- (numberVairousTypeArray.length) * _divierPercentage;
+      var _remainingSpace = 100;
       for (_i = 0, _n = numberVairousTypeArray.length; _i < _n; ++_i) {
         var minSize = parseInt(minSizes[_i], 10);
         if (minSize) {
@@ -115,7 +111,6 @@ angular.module('ui.layout', []).controller('uiLayoutCtrl', [
         opts.maxSizes = opts.maxSizes || [];
         opts.minSizes = opts.minSizes || [];
         opts.dividerSize = opts.dividerSize || '10px';
-        var rawDividerSize = parseInt(opts.dividerSize, 10);
         // Preallocate the array size
         opts.sizes.length = _child_len;
         for (_i = 0; _i < _child_len; ++_i) {
@@ -130,9 +125,7 @@ angular.module('ui.layout', []).controller('uiLayoutCtrl', [
           opts.minSizes[_i] = angular.element(_childens[_i]).attr('min-size') || opts.minSizes[_i] || null;
         }
         // get the final percent sizes
-        // splitbar percentage
-
-        _sizes = convertNumericDataTypesToPencents(opts.sizes, opts.minSizes, opts.maxSizes, tElement[0]['offset' + (isUsingColumnFlow ? 'Width' : 'Height')], opts.dividerSize);
+        _sizes = convertNumericDataTypesToPencents(opts.sizes, opts.minSizes, opts.maxSizes, tElement[0]['offset' + (isUsingColumnFlow ? 'Width' : 'Height')]);
         if (_child_len > 1) {
           // Initialise the layout with equal sizes.
           var flowProperty = isUsingColumnFlow ? 'left' : 'top';
@@ -140,37 +133,12 @@ angular.module('ui.layout', []).controller('uiLayoutCtrl', [
           var sizeProperty = isUsingColumnFlow ? 'width' : 'height';
           _position = 0;
           for (_i = 0; _i < _child_len; ++_i) {
-            console.debug("Position: " + _position);
-            var child = angular.element(_childens[_i]);
-            var area = angular.element(divWrapper);
-            area.addClass("stretch");
-            child.wrap(area);
-            var minSizeAttr = child.attr("minSize");
-            var maxSizeAttr = child.attr("maxSizeAttr");
-            var size = child.attr("size");
-
-            // copy the attributes to the new wrapper
-            if(minSizeAttr){
-              area.attr("minSize", minSizeAttr);
-            }
-            if(maxSizeAttr){
-              area.attr("maxSize", maxSizeAttr);
-            }
-            if(size){
-              area.attr("size", size);
-            }
-
-            area.css(flowProperty, _position + '%');
-            _position += _sizes[_i]; //+ _dividerPercentage;
+            var area = angular.element(_childens[_i]).css(flowProperty, _position + '%');
+            _position += _sizes[_i];
             area.css(oppositeFlowProperty, 100 - _position + '%');
-            if(_i != 0){
-              area.css("margin-" + flowProperty, (rawDividerSize) + "px");
-            }
             if (_i < _child_len - 1) {
               // Add a split bar
-              console.debug("Divider Position: " + (_position));
-              var bar = angular.element(splitBarElem_htmlTemplate).css(flowProperty, (_position) + '%');
-              var childLines = bar.children();
+              var bar = angular.element(splitBarElem_htmlTemplate).css(flowProperty, _position + '%');
               bar.css(sizeProperty, opts.dividerSize);
               area.after(bar);
             }
